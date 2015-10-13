@@ -20,7 +20,7 @@ for category in categoryList
 			asset[category][realname] = {} unless asset[category][realname]
 
 			switch extname.toLowerCase()
-				when '.jpg', 'jpeg', 'tif', 'bmp'
+				when '.jpg', '.jpeg', '.tif', '.bmp'
 					absname = path.join(categoryPath, filename).replace("'", "\'")
 					newname = absname.replace(extname, '.png')
 					try
