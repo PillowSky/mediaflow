@@ -1,0 +1,10 @@
+doctype html
+html
+	head
+		meta(charset='UTF-8')
+		meta(name='viewport', content='width=device-width')
+		title= message
+
+	body
+		h1= error.status + ' ' + message
+		pre #{error.stack}
