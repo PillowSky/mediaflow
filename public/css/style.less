@@ -1,5 +1,83 @@
 @charset "UTF-8";
 
-#banner {
-	
+@grey: rgb(242, 242, 242);
+@black: rgb(22, 22, 22);
+
+#background {
+	position: fixed;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-image: url('/img/background/background0.jpg');
+	background-size: cover;
+	color: white;
+	text-align: center;
+	p#title {
+		margin-top: 10%;
+		font-size: 5em;
+		font-weight: lighter;
+		line-height: 0;
+	}
+	p#author {
+		font-size: 2rem;
+		font-weight: lighter;
+		line-height: 1rem;
+	}
+}
+
+#scene {
+	position: relative;
+	margin-top: 25%;
+	padding-top: 5%;
+	height: 80%;
+	background-color: @grey;
+	#line {
+		width: 80%;
+		margin: auto auto;
+		animation: spananimation 1s;
+	}
+	.ceil {
+		background-color: white;
+		margin: 0 0.5rem;
+		height: 12rem;
+		background: rgba(0, 0, 0, 0.5);
+		background-image: url('/assets/动画.jpg');
+		cursor: pointer;
+		p {
+			font-weight: lighter;
+			color: white;
+			text-align: center;
+			line-height: 12rem;
+			margin: 0;
+			font-size: 1.2rem;
+			&:hover {
+				background-color: rgba(0, 0, 0, 0.5);
+				transition: all 0.25s;
+				font-size: 2rem;
+			}
+		}
+	}
+}
+
+@keyframes spananimation {
+	from {
+		width: 0%;
+	}
+	to {
+		width: 80%;
+	}
+}
+
+#footer {
+	position: relative;
+	height: 40%;
+	background-color: @black;
+	p {
+		margin: 0;
+		color: white;
+		text-align: center;
+		font-size: 4rem;
+		font-weight: lighter;
+		line-height: 8rem;
+	}
 }

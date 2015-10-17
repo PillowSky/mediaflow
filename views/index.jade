@@ -5,9 +5,27 @@ html
 		meta(name='viewport', content='initial-scale=1, maximum-scale=1, user-scalable=no')
 		title Gallery
 		link(rel='stylesheet', href='/components/angular-material/angular-material.css')
+		link(rel='stylesheet', href='/css/style.css')
 
 	body(ng-app='GalleryApp')
-		#banner
+		#background
+			p#title Media Flow
+			p#author By Huang Yuzhong
+
+		#scene
+			#line(layout='row')
+				.ceil.md-whiteframe-1dp(flex)
+					p 动画
+				.ceil.md-whiteframe-1dp(flex)
+					p 电影
+				.ceil.md-whiteframe-1dp(flex)
+					p 动画
+				.ceil.md-whiteframe-1dp(flex)
+					p 动画
+				.ceil.md-whiteframe-1dp(flex)
+					p 动画
+		#footer
+			p Design and code by Yuzo
 
 		script(src='/components/angular/angular.min.js')
 		script(src='/components/angular-aria/angular-aria.min.js')
