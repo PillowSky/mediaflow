@@ -26,7 +26,7 @@ module.exports = (grunt) ->
 				spawn: false
 				livereload: reloadPort
 			server:
-				files: ['bin/www', 'app.js', 'routes/*.coffee']
+				files: ['Gruntfile.coffee', 'bin/www', 'app.js', 'routes/*.coffee', 'models/*.coffee']
 				tasks: ['develop', 'delayed-livereload']
 			views:
 				files: ['views/*.jade']
