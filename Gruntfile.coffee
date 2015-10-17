@@ -21,6 +21,7 @@ module.exports = (grunt) ->
 				files:
 					'public/js/app.js': 'public/js/app.coffee'
 					'public/js/controller.js': 'public/js/controller.coffee'
+					'public/js/service.js': 'public/js/service.coffee'
 		watch:
 			options:
 				spawn: false

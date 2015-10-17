@@ -6,7 +6,7 @@ router = express.Router()
 router.get '/', (req, res) ->
 	res.render 'index'
 
-router.get '/list', (req, res) ->
+router.get '/asset', (req, res) ->
 	res.json(asset)
 
 module.exports = router

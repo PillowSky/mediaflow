@@ -1,4 +1,4 @@
 'use strict'
 
-GalleryApp = angular.module('GalleryApp', ['ngMaterial', 'GalleryController'])
+GalleryApp = angular.module('GalleryApp', ['ngMaterial', 'GalleryController', 'GalleryService'])
 

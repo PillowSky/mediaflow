@@ -12,18 +12,10 @@ html
 			p#title Media Flow
 			p#author By Huang Yuzhong
 
-		#scene
+		#scene(ng-controller="SceneController")
 			#line(layout='row')
-				.ceil.md-whiteframe-1dp(flex)
-					p 动画
-				.ceil.md-whiteframe-1dp(flex)
-					p 电影
-				.ceil.md-whiteframe-1dp(flex)
-					p 动画
-				.ceil.md-whiteframe-1dp(flex)
-					p 动画
-				.ceil.md-whiteframe-1dp(flex)
-					p 动画
+				.ceil.md-whiteframe-1dp(flex ng-repeat='(category, _) in asset' ng-style="{'background-image': 'url(/assets/{{category}}.jpg)'}")
+					p {{category}}
 		#footer
 			p Design and code by Yuzo
 
@@ -31,5 +23,7 @@ html
 		script(src='/components/angular-aria/angular-aria.min.js')
 		script(src='/components/angular-animate/angular-animate.min.js')
 		script(src='/components/angular-material/angular-material.min.js')
+		script(src='/components/angular-resource/angular-resource.min.js')
 		script(src='/js/app.js')
 		script(src='/js/controller.js')
+		script(src='/js/service.js')
