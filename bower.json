@@ -5,7 +5,8 @@
 		"angular": "1.4.x",
 		"angular-material": "0.11.x",
 		"angular-resource": "1.4.x",
-		"angular-route": "1.4.x"
+		"angular-route": "1.4.x",
+		"animate.css": "x"
 	},
 	"ignore": [
 		"**/.*",

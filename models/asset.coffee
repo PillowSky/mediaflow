@@ -4,6 +4,8 @@ path = require 'path'
 assetDirectory = path.join(__dirname, '../public/assets')
 category = fs.readdirSync(assetDirectory)
 
+# item in category
+
 asset = {}
 
 for folder in category
