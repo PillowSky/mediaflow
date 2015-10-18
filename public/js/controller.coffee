@@ -42,9 +42,3 @@ GalleryController.controller 'ListController', ['$scope', 'Asset', 'Summary', 'M
 		result.$promise.then ->
 			$scope.summary = result.text
 ]
-
-GalleryController.controller 'FlowController', ['$scope', 'Asset', ($scope, Asset)->
-	asset = Asset.get()
-	asset.$promise.then (key, value)->
-		$scope.asset = asset
-]

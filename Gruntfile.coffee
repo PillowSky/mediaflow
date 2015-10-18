@@ -18,8 +18,6 @@ module.exports = (grunt) ->
 				files:
 					'public/partial/line.html': 'public/partial/line.jade'
 					'public/partial/list.html': 'public/partial/list.jade'
-					'public/partial/flow.html': 'public/partial/flow.jade'
-
 		less:
 			dist:
 				files:
