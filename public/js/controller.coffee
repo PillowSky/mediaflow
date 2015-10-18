@@ -4,6 +4,7 @@ GalleryController.controller 'LineController', ['$scope', '$location', 'Asset', 
 	asset = Asset.get()
 	asset.$promise.then ->
 		$scope.asset = asset
+		Memo('asset', asset)
 	$scope.gotoList = ->
 		Memo('category', this.category)
 		$location.url('/list')
@@ -11,14 +12,18 @@ GalleryController.controller 'LineController', ['$scope', '$location', 'Asset', 
 
 GalleryController.controller 'ListController', ['$scope', 'Asset', 'Summary', 'Memo', '$sce', ($scope, Asset, Summary, Memo, $sce)->
 	$scope.memo = Memo()
-	$scope.memo.category = null if not $scope.memo.category
-	$scope.memo.item = null if not $scope.memo.category
+	$scope.asset = asset = Memo('asset')
 
-	asset = Asset.get()
-	asset.$promise.then ->
-		$scope.asset = asset
+	if asset
 		$scope.memo.category = Object.keys(asset)[0] if not $scope.memo.category
-		$scope.memo.item = Object.keys(asset[$scope.memo.category])[0] if not $scope.memo.item
+		$scope.memo.item = Object.keys(asset[$scope.memo.category])[0]
+	else
+		asset = Asset.get()
+
+		asset.$promise.then ->
+			$scope.asset = asset
+			$scope.memo.category = Object.keys(asset)[0] if not $scope.memo.category
+			$scope.memo.item = Object.keys(asset[$scope.memo.category])[0]
 
 	$scope.categoryClicked = ->
 		Memo('category', this.category)
@@ -34,17 +39,10 @@ GalleryController.controller 'ListController', ['$scope', 'Asset', 'Summary', 'M
 		this.item == Memo('item')
 
 	$scope.$watch 'memo.item', (newValue, oldValue)->
-		if asset[$scope.memo.category]
-			$scope.audioSrc = "/assets/#{$scope.memo.category}/#{asset[$scope.memo.category][$scope.memo.item].audio}"
-			qs =
-				category: Memo('category')
-				filename: asset[Memo('category')][Memo('item')].text
-			result = Summary.text(qs)
-			result.$promise.then ->
-				$scope.summary = result.text
-
-				angular.element(document.querySelector('.content-node')).ready ->
-					console.log(document.querySelector('.content-node').clientHeight, document.querySelector('#view').clientHeight)
-					document.querySelector('#view').style.height = document.querySelector('.content-node').clientHeight + 'px'
-					console.log(document.querySelector('.content-node').clientHeight, document.querySelector('#view').clientHeight)
+		$scope.audioSrc = "/assets/#{$scope.memo.category}/#{asset[$scope.memo.category][$scope.memo.item].audio}"
+		result = Summary.text
+			category: Memo('category')
+			filename: asset[Memo('category')][Memo('item')].text
+		result.$promise.then ->
+			$scope.summary = result.text
 ]

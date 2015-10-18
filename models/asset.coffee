@@ -18,7 +18,7 @@ for folder in category
 			realname = path.basename(file, extname)
 			asset[folder][realname] = {} unless asset[folder][realname]?
 			switch extname.toLowerCase()
-				when '.jpg' then asset[folder][realname].image = file
+				when '.jpg', '.png' then asset[folder][realname].image = file
 				when '.m4a' then asset[folder][realname].audio = file
 				when '.txt' then asset[folder][realname].text = file
 

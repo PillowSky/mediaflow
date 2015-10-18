@@ -3,10 +3,10 @@ html
 	head
 		meta(charset='UTF-8')
 		meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
-		meta(name="description" content="科学指南针")
+		meta(name="description" content="Media Flow")
 		meta(name="renderer" content="webkit")
 		meta(name='viewport', content='initial-scale=1, maximum-scale=1, user-scalable=no')
-		title Gallery
+		title Media Flow
 		link(rel='stylesheet', href='/components/angular-material/angular-material.css')
 		link(rel='stylesheet', href='/components/animate.css/animate.min.css')
 		link(rel='stylesheet', href='/css/style.css')
@@ -14,13 +14,14 @@ html
 
 	body(ng-app='GalleryApp')
 		#background
-			p#title Media Flow
-			p#author By Huang Yuzhong
-
+			p#title
+				a(href='#/') Media Flow
 		#view(ng-view)
 
 		#footer
-			p Design and code by Yuzo
+			p#author Design and code by 
+				a(href='mailto:PillowSky.qq.com') PillowSky@qq.com
+			p#stack Powered by Node.js / Express
 
 		script(src='/components/angular/angular.min.js')
 		script(src='/components/angular-aria/angular-aria.min.js')
