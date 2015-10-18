@@ -1,9 +1,13 @@
-#list(layout='row')
-	#category.md-whiteframe-10dp(flex="10" layout='column')
-		md-button.folder.md-raised.md-primary(ng-repeat='(category, _) in asset' ng-click='categoryClicked()' ng-class="{'active': categoryIsSelected()}") {{category}}
-	#item.md-whiteframe-10dp(flex="20" layout='column')
-		md-button.folder.md-raised.md-primary(ng-repeat='(item, _) in asset[memo.category]' ng-click='itemClicked()' ng-class="{'active': itemIsSelected()}") {{item}}
-	.md-whiteframe-10dp(flex)
-		img(ng-src='/assets/{{memo.category}}/{{asset[memo.category][memo.item].image}}')
-		audio(ng-src='{{audioSrc}}' controls)
-		p {{summary}}
+#list(layout='row').md-whiteframe-24dp
+	#category.md-whiteframe-12dp(flex="10" layout='column')
+		md-button.node.md-raised.md-primary(ng-repeat='(category, _) in asset' ng-click='categoryClicked()' ng-class="{'active': categoryIsSelected()}") {{category}}
+	#item.md-whiteframe-12dp(flex="20" layout='column')
+		md-button.node.md-raised.md-primary(ng-repeat='(item, _) in asset[memo.category]' ng-click='itemClicked()' ng-class="{'active': itemIsSelected()}") {{item}}
+	#content.md-whiteframe-12dp(flex="70")
+		md-content.md-padding.content-node(layout='row')
+			img(flex='40' ng-src='/assets/{{memo.category}}/{{asset[memo.category][memo.item].image}}')
+			.content-node-inner.md-padding(flex='60')
+				p.summary-title {{memo.item}}
+				p.summary-text {{summary}}
+				p.audio-title Player
+				audio(ng-src='{{audioSrc}}' controls)

@@ -29,8 +29,9 @@
 	position: relative;
 	margin-top: 25%;
 	padding-top: 5%;
-	height: 80%;
+	//height: 100%;
 	background-color: @grey;
+	transition: all 0.5s;
 	#line {
 		width: 80%;
 		margin: auto auto;
@@ -56,6 +57,60 @@
 			}
 		}
 	}
+	#list {
+		width: 90%;
+		margin: auto;
+		height: 100%;
+		#category {
+			.node {
+				margin: 0;
+				padding: 0.5rem 0;
+				border-radius: 0;
+				background-color: #106CC8;
+				line-height: 4rem;
+				&.active {
+					background-color: #267ED5;
+				}
+			}
+			background-color: #106CC8;
+		}
+		#item {
+			overflow-y: scroll;
+			.node {
+				margin: 0;
+				padding: 0.5rem 0;
+				border-radius: 0;
+				background-color: #1C5792;
+				line-height: 1.25rem;
+				&.active {
+					background-color: #32699F;
+				}
+			}
+		}
+		#content {
+			height: 100%;
+			.content-node {
+				img {
+					height: auto;
+				}
+				p.summary-title {
+					font-size: 3em;
+					font-weight: lighter;
+					line-height: 3rem;
+					text-transform:uppercase;
+				}
+				p.summary-text {
+					font-weight: lighter;
+				}
+				p.audio-title {
+					font-size: 3em;
+					font-weight: lighter;
+					line-height: 3rem;
+					text-transform:capitalize;
+				}
+			}
+		}
+	}
 }
 
 @keyframes spananimation {
@@ -64,39 +119,6 @@
 	}
 	to {
 		width: 80%;
-	}
-}
-
-#list {
-	width: 90%;
-	margin: auto;
-	height: 100%;
-	#category {
-		.folder {
-			margin: 0;
-			padding: 0.5rem;
-			border-radius: 0;
-			background-color: #106CC8;
-			&.active {
-				background-color: #267ED5;
-			}
-		}
-		background-color: #106CC8;
-	}
-	#item {
-		height: 100%;
-		overflow-x: hidden;
-		overflow-y: scroll;
-		overflow-y: scrollbars-none;
-		.folder {
-			margin: 0;
-			padding: 0.5rem;
-			border-radius: 0;
-			background-color: #106CC8;
-			&.active {
-				background-color: #267ED5;
-			}
-		}
 	}
 }
 

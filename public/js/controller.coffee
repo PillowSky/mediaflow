@@ -34,11 +34,17 @@ GalleryController.controller 'ListController', ['$scope', 'Asset', 'Summary', 'M
 		this.item == Memo('item')
 
 	$scope.$watch 'memo.item', (newValue, oldValue)->
-		$scope.audioSrc = "/assets/#{$scope.memo.category}/#{asset[$scope.memo.category][$scope.memo.item].audio}"
-		qs =
-			category: Memo('category')
-			filename: asset[Memo('category')][Memo('item')].text
-		result = Summary.text(qs)
-		result.$promise.then ->
-			$scope.summary = result.text
+		if asset[$scope.memo.category]
+			$scope.audioSrc = "/assets/#{$scope.memo.category}/#{asset[$scope.memo.category][$scope.memo.item].audio}"
+			qs =
+				category: Memo('category')
+				filename: asset[Memo('category')][Memo('item')].text
+			result = Summary.text(qs)
+			result.$promise.then ->
+				$scope.summary = result.text
+
+				angular.element(document.querySelector('.content-node')).ready ->
+					console.log(document.querySelector('.content-node').clientHeight, document.querySelector('#view').clientHeight)
+					document.querySelector('#view').style.height = document.querySelector('.content-node').clientHeight + 'px'
+					console.log(document.querySelector('.content-node').clientHeight, document.querySelector('#view').clientHeight)
 ]

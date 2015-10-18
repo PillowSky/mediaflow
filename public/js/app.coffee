@@ -8,6 +8,7 @@ GalleryApp.config ['$routeProvider', ($routeProvider)->
 		controller: 'LineController'
 	).when('/list'
 		templateUrl: '/partial/list.html'
+		controller: 'ListController'
 	).otherwise(
 		redirectTo: '/'
 	)
