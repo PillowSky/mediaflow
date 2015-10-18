@@ -1,0 +1,9 @@
+#list(layout='row')
+	#category.md-whiteframe-10dp(flex="10" layout='column')
+		md-button.folder.md-raised.md-primary(ng-repeat='(category, _) in asset' ng-class="{'active' : isSelected()}") {{category}}
+	#name.md-whiteframe-10dp(flex="20" layout='column')
+		md-button.folder.md-raised.md-primary(ng-repeat='(name, _) in asset["动画"]' ng-class="{'active' : isSelected()}") {{name}}
+	.md-whiteframe-10dp(flex)
+		img(ng-src='/assets/动画/{{asset["动画"]["Blender"].image}}')
+		audio(ng-src='/assets/动画/Blender.m4a' controls preload)
+		p {{summary}}

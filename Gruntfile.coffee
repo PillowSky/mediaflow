@@ -13,9 +13,17 @@ module.exports = (grunt) ->
 		develop:
 			server:
 				file: 'bin/www'
+		jade:
+			dist:
+				files:
+					'public/partial/line.html': 'public/partial/line.jade'
+					'public/partial/list.html': 'public/partial/list.jade'
+					'public/partial/flow.html': 'public/partial/flow.jade'
+
 		less:
 			dist:
-				files: 'public/css/style.css': 'public/css/style.less'
+				files:
+					'public/css/style.css': 'public/css/style.less'
 		coffee:
 			dist:
 				files:
@@ -27,10 +35,15 @@ module.exports = (grunt) ->
 				spawn: false
 				livereload: reloadPort
 			server:
-				files: ['Gruntfile.coffee', 'bin/www', 'app.js', 'routes/*.coffee', 'models/*.coffee']
+				files: ['bin/www', 'app.js', 'routes/*.coffee', 'models/*.coffee']
 				tasks: ['develop', 'delayed-livereload']
 			views:
 				files: ['views/*.jade']
+				options:
+					livereload: reloadPort
+			jade:
+				files: ['public/partial/*.jade']
+				tasks: ['jade']
 				options:
 					livereload: reloadPort
 			css:
@@ -60,4 +73,4 @@ module.exports = (grunt) ->
 				done reloaded
 		, 500
 
-	grunt.registerTask 'default', ['less', 'coffee', 'develop', 'watch']
+	grunt.registerTask 'default', ['jade', 'less', 'coffee', 'develop', 'watch']

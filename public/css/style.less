@@ -25,7 +25,7 @@
 	}
 }
 
-#scene {
+#view {
 	position: relative;
 	margin-top: 25%;
 	padding-top: 5%;
@@ -35,24 +35,24 @@
 		width: 80%;
 		margin: auto auto;
 		animation: spananimation 1s;
-	}
-	.ceil {
-		background-color: white;
-		margin: 0 0.5rem;
-		height: 12rem;
-		cursor: pointer;
-		p {
-			font-weight: lighter;
-			color: white;
-			text-align: center;
-			line-height: 12rem;
-			margin: 0;
-			font-size: 1.5rem;
-			background-color: rgba(0, 0, 0, 0.3);
-			&:hover {
-				background-color: rgba(0, 0, 0, 0.6);
-				transition: all 0.25s;
-				font-size: 2rem;
+		.ceil {
+			background-color: white;
+			margin: 0 0.5rem;
+			height: 12rem;
+			text-decoration: none;
+			p {
+				font-weight: lighter;
+				color: white;
+				text-align: center;
+				line-height: 12rem;
+				margin: 0;
+				font-size: 1.5rem;
+				background-color: rgba(0, 0, 0, 0.3);
+				&:hover {
+					background-color: rgba(0, 0, 0, 0.6);
+					transition: all 0.25s;
+					font-size: 2rem;
+				}
 			}
 		}
 	}
@@ -64,6 +64,31 @@
 	}
 	to {
 		width: 80%;
+	}
+}
+
+#list {
+	width: 90%;
+	margin: auto;
+	height: 100%;
+	#category {
+		.folder {
+			margin: 0;
+			padding: 0.5rem;
+			border-radius: 0;
+		}
+			background-color: #3F51B5;
+	}
+	#name {
+		height: 100%;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		overflow-y: scrollbars-none;
+		.folder {
+			margin: 0;
+			padding: 0.5rem;
+			border-radius: 0;
+		}
 	}
 }
 

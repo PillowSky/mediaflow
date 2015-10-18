@@ -1,0 +1,3 @@
+#line(layout='row')
+	.ceil.md-whiteframe-1dp(flex ng-repeat='(category, _) in asset' ng-style="{'background-image': 'url(/assets/{{category}}.jpg)'}" ng-href='/list/{{category}}')
+		p {{category}}
