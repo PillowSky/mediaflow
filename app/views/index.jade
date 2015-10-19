@@ -13,15 +13,15 @@ html
 		link(rel='icon' href='/img/favicon.ico')
 
 	body(ng-app='GalleryApp')
-		#background
-			p#title
+		header(ng-controller="HeaderController" ng-style="{'background-image': 'url(/img/background/background{{randomInt(0, 20)}}.jpg)'}")
+			h1#title
 				a(href='#/') Media Flow
-		#view(ng-view)
+		main(ng-view)
 
-		#footer
-			p#author Design and code by 
+		footer
+			h6#author Design and code by 
 				a(href='mailto:PillowSky.qq.com') PillowSky@qq.com
-			p#stack Powered by Node.js / Express
+			h6#stack Powered by Node.js / Express
 
 		script(src='/components/angular/angular.min.js')
 		script(src='/components/angular-aria/angular-aria.min.js')

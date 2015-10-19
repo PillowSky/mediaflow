@@ -2,6 +2,11 @@
 
 GalleryController = angular.module('GalleryController', [])
 
+GalleryController.controller 'HeaderController', ['$scope', ($scope)->
+	$scope.randomInt = (min, max)->
+		Math.floor(min + Math.random() * (max - min))
+]
+
 GalleryController.controller 'LineController', ['$scope', '$location', 'Asset', 'Memo', ($scope, $location, Asset, Memo)->
 	asset = Asset.get()
 	asset.$promise.then ->
