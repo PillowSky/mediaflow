@@ -3,8 +3,8 @@ html
 	head
 		meta(charset='UTF-8')
 		meta(name='viewport', content='width=device-width')
-		title= message
-
+		title= title
 	body
-		h1= error.status + ' ' + message
+		h1= message
+		h2= error.status
 		pre #{error.stack}

@@ -2,7 +2,7 @@ fs = require 'fs'
 path = require 'path'
 child_process = require 'child_process'
 
-assetDirectory = path.join(__dirname, '../public/assets')
+assetDirectory = path.join(__dirname, '../../public/assets')
 categoryList = fs.readdirSync(assetDirectory)
 
 # item in category

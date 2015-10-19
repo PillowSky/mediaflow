@@ -1,3 +1,5 @@
+'use strict'
+
 GalleryController = angular.module('GalleryController', [])
 
 GalleryController.controller 'LineController', ['$scope', '$location', 'Asset', 'Memo', ($scope, $location, Asset, Memo)->

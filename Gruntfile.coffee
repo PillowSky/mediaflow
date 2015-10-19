@@ -22,7 +22,7 @@ module.exports = (grunt) ->
 			grunt.file.readJSON('package.json')
 		develop:
 			server:
-				file: 'bin/www'
+				file: 'app.js'
 		jade:
 			development:
 				options:
@@ -53,7 +53,7 @@ module.exports = (grunt) ->
 				spawn: false
 				livereload: reloadPort
 			server:
-				files: ['bin/www', 'app.js', 'routes/*.coffee', 'models/*.coffee']
+				files: ['app.js', 'app/**/*.coffee', 'config/*.coffee']
 				tasks: ['develop', 'delayed-livereload']
 			views:
 				files: ['views/*.jade']
@@ -95,7 +95,7 @@ module.exports = (grunt) ->
 				else
 					grunt.log.error 'Unable to make a delayed live reload.'
 				done reloaded
-		, 1000
+		, 500
 
 	grunt.registerTask 'default', ['jade:development', 'less:development', 'coffee:development', 'develop', 'watch']
 	grunt.registerTask 'release', ['jade:production', 'less:production', 'coffee:production', 'uglify']
