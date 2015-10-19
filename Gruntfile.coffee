@@ -15,7 +15,7 @@ module.exports = (grunt) ->
 		'public/css/style.css': 'public/css/style.less'
 
 	coffeeFiles =
-		'public/js/script.js': ['public/js/app.coffee', 'public/js/controller.coffee', 'public/js/service.coffee']
+		'public/js/script.js': ['public/js/app.coffee', 'public/js/controller.coffee', 'public/js/service.coffee', 'public/js/filter.coffee']
 
 	uglifyFiles =
 		'public/js/script.js': 'public/js/script.js'

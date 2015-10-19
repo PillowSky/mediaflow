@@ -1,6 +1,6 @@
 'use strict'
 
-GalleryApp = angular.module('GalleryApp', ['ngMaterial', 'ngRoute', 'ngAnimate', 'GalleryController', 'GalleryService'])
+GalleryApp = angular.module('GalleryApp', ['ngMaterial', 'ngRoute', 'ngAnimate', 'GalleryController', 'GalleryService', 'GalleryFilter'])
 
 GalleryApp.config ['$routeProvider', ($routeProvider)->
 	$routeProvider.when('/'

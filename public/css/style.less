@@ -1,27 +1,25 @@
 @charset "UTF-8";
 
-@grey: rgb(242, 242, 242);
-@black: rgb(22, 22, 22);
+a {
+	text-decoration: none;
+	color: inherit;
+}
 
 header {
 	position: fixed;
 	top: 0;
 	height: 100%;
 	width: 100%;
-	background-color: @grey;
+	background-color: rgb(35, 35, 35);
 	background-size: cover;
-	color: white;
-	text-align: center;
 	h1#title {
 		margin-top: 12%;
+		text-align: center;
 		font-size: 5em;
-		font-weight: lighter;
 		line-height: 0;
-		a {
-			text-decoration: none;
-			color: white;
-			text-shadow: 0 0 0.5rem white;
-		}
+		font-weight: lighter;
+		text-shadow: 0 0 0.5rem white;
+		color: white;
 	}
 }
 
@@ -29,26 +27,26 @@ main {
 	position: relative;
 	margin-top: 25%;
 	padding-top: 5%;
-	background-color: rgba(242, 242, 242, 0.9);
+	background-color: rgba(240, 240, 240, 0.9);
 	transition: all 0.5s;
 	#line {
+		margin: auto;
 		width: 90%;
 		height: 45vh;
-		margin: auto auto;
 		animation: spananimation 1s;
-		section.ceil {
-			background-color: white;
+		section.node {
 			margin: 0 0.5rem;
 			height: 12rem;
+			background-color: rgb(50, 50, 50);
 			cursor: pointer;
 			h2 {
+				margin: 0;
+				line-height: 12rem;
+				font-size: 1.5rem;
+				text-align: center;
 				font-weight: lighter;
 				color: white;
-				text-align: center;
-				line-height: 12rem;
-				margin: 0;
-				font-size: 1.5rem;
-				background-color: rgba(0, 0, 0, 0.3);
+				background-color: rgba(0, 0, 0, 0.4);
 				transition: all 0.25s;
 				text-shadow: 0 0 0.25rem black;
 				&:hover {
@@ -59,16 +57,16 @@ main {
 		}
 	}
 	#list {
-		width: 90%;
 		margin: auto;
+		width: 90%;
 		height: 100vh;
 		#category {
 			.node {
 				margin: 0;
 				padding: 0.5rem 0;
+				line-height: 4rem;
 				border-radius: 0;
 				background-color: #106CC8;
-				line-height: 4rem;
 				&.active {
 					background-color: #267ED5;
 				}
@@ -80,34 +78,29 @@ main {
 			.node {
 				margin: 0;
 				padding: 0.5rem 0;
+				line-height: 1.25rem;
 				border-radius: 0;
 				background-color: #1C5792;
-				line-height: 1.25rem;
 				&.active {
 					background-color: #32699F;
 				}
 			}
 		}
 		#content {
-			.content-node {
-				img {
-					height: auto;
-				}
-				p.summary-title {
-					font-size: 3em;
-					font-weight: lighter;
-					line-height: 3rem;
-					text-transform:uppercase;
-				}
-				p.summary-text {
-					font-weight: lighter;
-				}
-				p.audio-title {
-					font-size: 3em;
-					font-weight: lighter;
-					line-height: 3rem;
-					text-transform:capitalize;
-				}
+			h3.summary-title {
+				font-size: 3em;
+				line-height: 3rem;
+				font-weight: lighter;
+				text-transform: uppercase;
+			}
+			p.summary-text {
+				font-weight: lighter;
+			}
+			h3.audio-title {
+				font-size: 3em;
+				line-height: 3rem;
+				font-weight: lighter;
+				text-transform: capitalize;
 			}
 		}
 	}
@@ -124,25 +117,15 @@ main {
 
 footer {
 	position: relative;
-	background-color: @black;
-	padding-top: 4rem;
+	background-color: rgb(25, 25, 25);
+	padding: 4rem 0 0.5rem;
 	h6 {
 		margin: 0;
-		color: white;
+		line-height: 3rem;
 		text-align: center;
 		font-size: 1rem;
 		font-weight: lighter;
-		line-height: 4rem;
-	}
-	h6#author {
-		line-height: 1rem;
-		a {
-			text-decoration: none;
-			color: white;
-		}
-	}
-	h6#stack {
-		font-size: 1rem;
+		color: white;
 	}
 }
 

@@ -1,13 +1,13 @@
 #list(layout='row').md-whiteframe-24dp
-	#category.md-whiteframe-12dp(flex="10" layout='column')
+	#category.md-whiteframe-12dp(flex='10' layout='column')
 		md-button.node.md-raised.md-primary(ng-repeat='(category, _) in asset' ng-click='categoryClicked()' ng-class="{'active': categoryIsSelected()}") {{category}}
-	#item.md-whiteframe-12dp(flex="20" layout='column')
+	#item.md-whiteframe-12dp(flex='20' layout='column')
 		md-button.node.md-raised.md-primary(ng-repeat='(item, _) in asset[memo.category]' ng-click='itemClicked()' ng-class="{'active': itemIsSelected()}") {{item}}
-	#content.md-whiteframe-12dp(flex="70")
-		md-content.md-padding.content-node(layout='row')
-			img(flex='40' ng-src='/assets/{{memo.category}}/{{asset[memo.category][memo.item].image}}')
-			.content-node-inner.md-padding(flex='60')
-				p.summary-title {{memo.item}}
-				p.summary-text {{summary}}
-				p.audio-title Player
-				audio(ng-src='{{audioSrc}}' controls autoplay)
+	#content.md-whiteframe-12dp(flex='70')
+		md-content.md-padding(layout='row')
+			img.cover(flex='40' ng-src='/assets/{{memo.category}}/{{asset[memo.category][memo.item].image}}')
+			.md-padding(flex='60')
+				h3.summary-title {{memo.item}}
+				p.summary-text {{summary.text}}
+				h3.audio-title Player
+				audio(ng-src="{{'/assets' | ConcatAudioSrc:memo.category:asset[memo.category][memo.item].audio}}" controls autoplay)

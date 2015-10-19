@@ -3,15 +3,22 @@
 GalleryController = angular.module('GalleryController', [])
 
 GalleryController.controller 'HeaderController', ['$scope', ($scope)->
-	$scope.randomInt = (min, max)->
+	randomInt = (min, max)->
 		Math.floor(min + Math.random() * (max - min))
+	$scope.imageIndex = randomInt(0, 20)
 ]
 
 GalleryController.controller 'LineController', ['$scope', '$location', 'Asset', 'Memo', ($scope, $location, Asset, Memo)->
-	asset = Asset.get()
-	asset.$promise.then ->
+	asset = Memo('asset')
+
+	if asset
 		$scope.asset = asset
-		Memo('asset', asset)
+	else
+		asset = Asset.get()
+		asset.$promise.then ->
+			$scope.asset = asset
+			Memo('asset', asset)
+
 	$scope.gotoList = ->
 		Memo('category', this.category)
 		$location.url('/list')
@@ -19,18 +26,19 @@ GalleryController.controller 'LineController', ['$scope', '$location', 'Asset', 
 
 GalleryController.controller 'ListController', ['$scope', 'Asset', 'Summary', 'Memo', '$sce', ($scope, Asset, Summary, Memo, $sce)->
 	$scope.memo = Memo()
-	$scope.asset = asset = Memo('asset')
+	asset = Memo('asset')
 
 	if asset
+		$scope.asset = asset
 		$scope.memo.category = Object.keys(asset)[0] if not $scope.memo.category
 		$scope.memo.item = Object.keys(asset[$scope.memo.category])[0]
 	else
 		asset = Asset.get()
-
 		asset.$promise.then ->
 			$scope.asset = asset
 			$scope.memo.category = Object.keys(asset)[0] if not $scope.memo.category
 			$scope.memo.item = Object.keys(asset[$scope.memo.category])[0]
+			Memo('asset', asset)
 
 	$scope.categoryClicked = ->
 		Memo('category', this.category)
@@ -46,10 +54,8 @@ GalleryController.controller 'ListController', ['$scope', 'Asset', 'Summary', 'M
 		this.item == Memo('item')
 
 	$scope.$watch 'memo.item', (newValue, oldValue)->
-		$scope.audioSrc = "/assets/#{$scope.memo.category}/#{asset[$scope.memo.category][$scope.memo.item].audio}"
-		result = Summary.text
-			category: Memo('category')
-			filename: asset[Memo('category')][Memo('item')].text
-		result.$promise.then ->
-			$scope.summary = result.text
+		if newValue
+			$scope.summary = Summary.text
+				category: Memo('category')
+				filename: asset[Memo('category')][Memo('item')].text
 ]
