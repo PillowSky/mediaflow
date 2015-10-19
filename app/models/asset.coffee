@@ -6,9 +6,7 @@ assetDirectory = path.join(__dirname, '../../public/assets')
 categoryList = fs.readdirSync(assetDirectory)
 
 # item in category
-
 asset = {}
-
 for category in categoryList
 	categoryPath = path.join(assetDirectory, category)
 	if fs.statSync(categoryPath).isDirectory()
