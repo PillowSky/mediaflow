@@ -1,5 +1,5 @@
 express = require 'express'
-asset = require '../models/asset'
+asset = require './models/asset'
 
 router = express.Router()
 

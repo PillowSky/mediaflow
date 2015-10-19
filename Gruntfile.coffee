@@ -7,6 +7,16 @@ module.exports = (grunt) ->
 	require('load-grunt-tasks')(grunt)
 	reloadPort = 35729
 
+	jadeFiles =
+		'public/partial/line.html': 'public/partial/line.jade'
+		'public/partial/list.html': 'public/partial/list.jade'
+
+	lessFiles =
+		'public/css/style.css': 'public/css/style.less'
+
+	coffeeFiles =
+		'public/js/script.js': ['public/js/app.coffee', 'public/js/controller.coffee', 'public/js/service.coffee']
+
 	grunt.initConfig
 		pkg:
 			grunt.file.readJSON('package.json')
@@ -14,20 +24,30 @@ module.exports = (grunt) ->
 			server:
 				file: 'bin/www'
 		jade:
-			dist:
-				files:
-					'public/partial/line.html': 'public/partial/line.jade'
-					'public/partial/list.html': 'public/partial/list.jade'
+			development:
+				options:
+					pretty: true
+				files: jadeFiles
+			production:
+				options:
+					pretty: false
+				files: jadeFiles
 		less:
-			dist:
-				files:
-					'public/css/style.css': 'public/css/style.less'
+			development:
+				options:
+					compress: false
+					ieCompat: false
+				files: lessFiles
+			production:
+				options:
+					compress: true
+					ieCompat: false
+				files: lessFiles
 		coffee:
-			dist:
-				files:
-					'public/js/app.js': 'public/js/app.coffee'
-					'public/js/controller.js': 'public/js/controller.coffee'
-					'public/js/service.js': 'public/js/service.coffee'
+			development:
+				files: coffeeFiles
+			production:
+				files: coffeeFiles
 		watch:
 			options:
 				spawn: false
@@ -41,19 +61,25 @@ module.exports = (grunt) ->
 					livereload: reloadPort
 			jade:
 				files: ['public/partial/*.jade']
-				tasks: ['jade']
+				tasks: ['jade:development']
 				options:
 					livereload: reloadPort
 			css:
 				files: ['public/css/*.less']
-				tasks: ['less']
+				tasks: ['less:development']
 				options:
 					livereload: reloadPort
 			js:
 				files: ['public/js/*.coffee']
-				tasks: ['coffee']
+				tasks: ['coffee:development']
 				options:
 					livereload: reloadPort
+		uglify:
+			options:
+				screwIE8: true
+			production:
+				files:
+					'public/js/script.js': 'public/js/script.js'
 
 	grunt.config.requires 'watch.server.files'
 	files = grunt.config('watch.server.files')
@@ -69,6 +95,7 @@ module.exports = (grunt) ->
 				else
 					grunt.log.error 'Unable to make a delayed live reload.'
 				done reloaded
-		, 500
+		, 1000
 
-	grunt.registerTask 'default', ['jade', 'less', 'coffee', 'develop', 'watch']
+	grunt.registerTask 'default', ['jade:development', 'less:development', 'coffee:development', 'develop', 'watch']
+	grunt.registerTask 'release', ['jade:production', 'less:production', 'coffee:production', 'uglify']
