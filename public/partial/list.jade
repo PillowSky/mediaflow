@@ -5,7 +5,8 @@
 		md-button.node.md-raised.md-primary(ng-repeat='(item, _) in asset[memo.category]' ng-click='itemClicked()' ng-class="{'active': itemIsSelected()}") {{item}}
 	#content.md-whiteframe-12dp(flex='70')
 		md-content.md-padding(layout='row')
-			img.cover(flex='40' ng-src='/assets/{{memo.category}}/{{asset[memo.category][memo.item].image}}')
+			.cover(flex='40')
+				img(ng-src='/assets/{{memo.category}}/{{asset[memo.category][memo.item].image}}')
 			.md-padding(flex='60')
 				h3.summary-title {{memo.item}}
 				p.summary-text {{summary.text}}

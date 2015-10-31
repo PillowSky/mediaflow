@@ -2,7 +2,8 @@
 
 GalleryFilter = angular.module('GalleryFilter', [])
 
-GalleryFilter.filter 'ConcatAudioSrc', ->
+GalleryFilter.filter 'ConcatAudioSrc', ['$sce', ($sce)->
 	(prefix, category, filename)->
 		if category and filename
-			return "#{prefix}/#{category}/#{filename}"
+			return $sce.trustAsResourceUrl("#{prefix}/#{category}/#{filename}")
+]
