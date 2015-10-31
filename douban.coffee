@@ -16,6 +16,9 @@ if process.argv.length != 3
 	console.error("Usage: #{process.argv[0]} #{process.argv[1]} <config.json>...")
 	process.exit(1)
 
+process.on 'uncaughtException', (error) ->
+	console.error error
+
 config = JSON.parse(fs.readFileSync(process.argv[2]))
 indexUrl = 'http://douban.fm'
 playlistUrl = 'http://douban.fm/j/mine/playlist'
