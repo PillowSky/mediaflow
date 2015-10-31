@@ -7,18 +7,18 @@ config =
 		root: rootPath
 		app:
 			name: 'gallery'
-		port: 3000
+		port: 18080
 
 	test:
 		root: rootPath
 		app:
 			name: 'gallery'
-		port: 3000
+		port: 18080
 
 	production:
 		root: rootPath
 		app:
 			name: 'gallery'
-		port: 3000
+		port: 18080
 
 module.exports = config[env]
