@@ -1,8 +1,5 @@
-express  = require 'express'
-
-router = express.Router()
-router.get '/', (req, res, next) ->
-	res.render 'index'
+'use strict'
 
 module.exports = (app) ->
-	app.use '/', router
+	app.get '/', (req, res) ->
+		res.render('index')

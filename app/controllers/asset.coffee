@@ -1,9 +1,7 @@
-express  = require 'express'
+'use strict'
+
 asset = require '../models/asset'
 
-router = express.Router()
-router.get '/asset', (req, res, next) ->
-	res.json(asset)
-
 module.exports = (app) ->
-	app.use '/', router
+	app.get '/asset', (req, res) ->
+		res.json(asset)

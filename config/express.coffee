@@ -6,7 +6,6 @@ logger = require 'morgan'
 cookieParser = require 'cookie-parser'
 bodyParser = require 'body-parser'
 compress = require 'compression'
-methodOverride = require 'method-override'
 
 module.exports = (app, config) ->
 	env = process.env.NODE_ENV || 'development'
@@ -23,7 +22,6 @@ module.exports = (app, config) ->
 	app.use cookieParser()
 	app.use compress()
 	app.use express.static config.root + '/public'
-	app.use methodOverride()
 
 	controllers = glob.sync config.root + '/app/controllers/**/*.coffee'
 	controllers.forEach (controller) ->
